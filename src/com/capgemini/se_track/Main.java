@@ -19,6 +19,9 @@ public class Main {
         System.out.println(calc.obscureFunction(1,2));
         System.out.println(calc.obscureFunction(2,4));
 
+//        System.out.println(calc.obscureFunctionTwo(1,2));
+//        System.out.println(calc.obscureFunctionTwo(2,4));
+
         waitForInput();
     }
 
