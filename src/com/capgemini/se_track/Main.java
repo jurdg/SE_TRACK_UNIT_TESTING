@@ -18,6 +18,21 @@ public class Main {
 
         System.out.println(calc.obscureFunction(1,2));
         System.out.println(calc.obscureFunction(2,4));
+        System.out.println(calc.obscureFunction(0,2));
+        // System.out.println(calc.obscureFunction(-1,0)); NumberFormatException
+        System.out.println(calc.obscureFunction(4,-1));
+        // System.out.println(calc.obscureFunction(4,-8)); NumberFormatException
+        System.out.println(calc.obscureFunction(-4,8));
+        System.out.println(calc.obscureFunction(0,0));
+
+        System.out.println(calc.lessObscureFunction(1,2));
+        System.out.println(calc.lessObscureFunction(2,4));
+        System.out.println(calc.lessObscureFunction(0,2));
+        // System.out.println(calc.obscureFunction(-1,0)); NumberFormatException
+        System.out.println(calc.lessObscureFunction(4,-1));
+        // System.out.println(calc.obscureFunction(4,-8)); NumberFormatException
+        System.out.println(calc.lessObscureFunction(-4,8));
+        System.out.println(calc.lessObscureFunction(0,0));
 
         waitForInput();
     }
