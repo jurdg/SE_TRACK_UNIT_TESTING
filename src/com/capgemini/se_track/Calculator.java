@@ -13,7 +13,12 @@ public class Calculator {
     }
 
     public int multiple(int number, int times) {
-        return number * times;
+        int result = 0;
+
+        for (int i = 0; i < times; i++) {
+            result = result + number;
+        }
+        return result;
     }
 
     public int obscureFunction(int number1, int number2) {
