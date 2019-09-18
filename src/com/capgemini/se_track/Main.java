@@ -66,6 +66,14 @@ public class Main {
             System.out.println(languages[c]); //ArrayIndexOutOfBoundsException
         }
     }
+    
+    public static void printName(String name) {
+        if(name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("name can't be empty!");
+        }
+        
+        System.out.println("Name: " + name);
+    }
 
     private static void waitForInput() {
         try {
