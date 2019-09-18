@@ -46,7 +46,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
         System.out.println("Input two integers");
 
-        a = input.nextInt(); //Input Exception? Als je een string invoert
+        a = input.nextInt(); //InputMisMatchException
         b = input.nextInt();
 
         result = a / b;
@@ -56,7 +56,7 @@ public class Main {
 
     private static void formatInteger() {
         String str = "1;";
-        int num = Integer.parseInt (str) ; //Parse Exception
+        int num = Integer.parseInt (str) ; //NumberFormatException
 
         System.out.println(num);
     }
@@ -75,6 +75,17 @@ public class Main {
         }
         
         System.out.println("Name: " + name);
+    }
+    
+    public static int getAgeFromUser() {
+        Scanner scanner = new Scanner(System.in);
+        
+        String age = scanner.nextLine(); 
+        if(age.isEmpty()) {
+            throw new new IllegalArgumentException("age can't be empty!");
+        }
+        
+        return Integer.parseInt(age); //NumberFormatException    
     }
 
     private static void waitForInput() {
