@@ -18,6 +18,8 @@ public class Main {
         loopOverArray();
 
         waitForInput();
+        
+        printName(null);
     }
 
     private static void createObject() {
