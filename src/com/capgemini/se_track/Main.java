@@ -7,19 +7,43 @@ public class Main {
 
     public static void main(String[] args) {
 
-        createObject();
+        try {          
+            createObject();
+        } catch (NullPointerException npe) {
+            npe.printStackTrace();   
+        }
 
-        getCharacter(25);
+        try {            
+            getCharacter(25);
+        } catch(IndexOutOfBoundsException iobe) {
+            iobe.printStackTrace();
+        }
 
-        formatInteger();
+        try {
+            formatInteger();
+        } catch(NumberFormatException nfe) {
+            nfe.printStackTrace();
+        }
 
-        division();
+        try {
+            division();
+        } catch(InputMisMatchException ime) {
+            ime.printStackTrace();   
+        }
 
-        loopOverArray();
-
+        try {
+            loopOverArray();
+        } catch(ArrayIndexOutOfBoundsException aiob) {
+            aiob.printStackTrace();   
+        }
+            
         waitForInput();
         
-        printName(null);
+        try {
+            printName(null);
+        } catch(IllegalArgumentException iae) {
+            iae.printStackTrace();   
+        }
         
         try {
             int myAge = getAgeFromUser();
