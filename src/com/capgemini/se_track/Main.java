@@ -7,43 +7,44 @@ public class Main {
 
     public static void main(String[] args) {
 
-        try {
-	    createObject();
-	} 
-	catch (NullPointerException npe) {
-	    npe.printStackTrace();
-	}
+		try {
+			createObject();
+		} 
+		catch (NullPointerException npe) {
+			npe.printStackTrace();
+		}
 
-	try {
-            getCharacter(25);
-	}
-	catch (IndexOutOfBoundsException iob) {
-	    iob.printStackTrace();
-	}
+		try {
+				getCharacter(25);
+		}
+		catch (IndexOutOfBoundsException iob) {
+			iob.printStackTrace();
+		}
 
-        try {
-	    formatInteger();
-	}
-	catch (NumberFormatException nfe) {
-	    nfe.printStackTrace();
-	}
+		try {
+			formatInteger();
+		}
+		catch (NumberFormatException nfe) {
+			nfe.printStackTrace();
+		}
 
-	try {
-            division();
-	}
-	catch (InputMismatchException ime) {
-	    ime.printStackTrace();
-	}
+		try {
+				division();
+		}
+		catch (InputMismatchException ime) {
+			ime.printStackTrace();
+		}
 
-	try {
-            loopOverArray();
-	}
-	catch (ArrayIndexOutOfBoundsException aob) {
-	    aob.printStackTrace();
-	}
+		try {
+				loopOverArray();
+		}
+		catch (ArrayIndexOutOfBoundsException aob) {
+			aob.printStackTrace();
+		}
 
-        waitForInput();
-    }
+			waitForInput();
+			
+		}
 
     private static void createObject() {
         String a;
@@ -90,7 +91,7 @@ public class Main {
         
 	//numberformatexception
 
-	String str = "1;";
+		String str = "1;";
         int num = Integer.parseInt (str) ;
 
         System.out.println(num);
@@ -127,6 +128,8 @@ public class Main {
 		}
 		catch (ArrayIndexOutOfBoundsException aob) {
 			aob.printStackTrace();
+			
+			throw new ArrayIndexOutOfBoundsException();
 		}
     }
 
@@ -145,9 +148,11 @@ public class Main {
 		}
 		catch (NullPointerException npe) {
 			npe.printStackTrace();
+			throw new NullPointerException();
 		}
 		catch (NumberFormatException nfe) {
 			nfe.printStackTrace();
+			throw new NumberFormatException();
 		}
     }
 }
