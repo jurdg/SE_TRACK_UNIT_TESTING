@@ -35,6 +35,8 @@ public class Main {
             division();
         } catch(InputMisMatchException ime) {
             ime.printStackTrace();   
+        } catch(ArithmeticException ame) {
+            ame.printStackTrace();   
         }
 
         try {
@@ -88,7 +90,7 @@ public class Main {
         a = input.nextInt(); //InputMisMatchException
         b = input.nextInt();
 
-        result = a / b;
+        result = a / b; //ArithMeticException
 
         System.out.println("Result = " + result);
     }
