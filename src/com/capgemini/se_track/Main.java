@@ -1,58 +1,70 @@
 package com.capgemini.se_track;
 
 import java.io.IOException;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        createObject();
-
-        getCharacter(25);
-
-        division();
-
-        formatInteger();
-
-        loopOverArray();
-
-        waitForInput();
-
-        throwCustomUncheckedException(false);
-        throwCustomUncheckedException(true);
-
-        throwCustomCheckedException(false);
-        throwCustomCheckedException(true);
-
         try {
-            unexpectedErrorHandling();
-        } catch (StackOverflowError soe) {
-            System.out.println("Will the application still run?");
+            suprise(1);   
+        } catch(StackOverflowError e){
+            
+        }
+        
+        try {          
+            createObject();
+        } catch (NullPointerException npe) {
+            npe.printStackTrace();   
         }
 
-        division(); // Is this code reachable?
+        try {            
+            getCharacter(25);
+        } catch(IndexOutOfBoundsException iobe) {
+            iobe.printStackTrace();
+        }
 
+        try {
+            formatInteger();
+        } catch(NumberFormatException nfe) {
+            nfe.printStackTrace();
+        }
+
+        try {
+            division();
+        } catch(InputMisMatchException ime) {
+            ime.printStackTrace();   
+        } catch(ArithmeticException ame) {
+            ame.printStackTrace();   
+        }
+
+        try {
+            loopOverArray();
+        } catch(ArrayIndexOutOfBoundsException aiob) {
+            aiob.printStackTrace();   
+        }
+            
         waitForInput();
-    }
-
-    private static void throwCustomUncheckedException(boolean withCustomMessage) throws MyUncheckedException {
-        if(!withCustomMessage)
-            throw new MyUncheckedException();
-
-        throw new MyUncheckedException("custom unchecked error");
-    }
-
-    private static void throwCustomCheckedException(boolean withCustomMessage) throws MyCheckedException {
-        if(!withCustomMessage)
-            throw new MyCheckedException();
-
-        throw new MyCheckedException("custom checked error");
+        
+        try {
+            printName(null);
+        } catch(IllegalArgumentException iae) {
+            iae.printStackTrace();   
+        }
+        
+        try {
+            int myAge = getAgeFromUser();
+            
+        } catch(IllegalArgumentException e) {
+            e.printStackTrace();   
+        } catch(NumberFormatException e) {
+            e.printStackTrace();   
+        }
     }
 
     private static void createObject() {
-        String a = "a";
+        String a; //a is null
         String b = "b";
         String c = "c";
         int i = 10;
@@ -60,65 +72,32 @@ public class Main {
         String result = a + b;
         result += c;
 
-        System.out.println(result + Integer.toString(i));
+        System.out.println(result + Integer.toString(i)); //throws a null pointer exception
     }
 
     private static void getCharacter(int index) {
         String a = "This is a test string ";
-        try {
-            char c = a.charAt(24);
-            System.out.println(c);
-        } catch (StringIndexOutOfBoundsException sie) {
-            System.out.println("Index out of bounds " + index);
-        }
+        char c = a.charAt(24); //Throws a IndexOutOfBoundsException
+        System.out.println(c);
     }
 
     private static void division() {
-        int a, b, result = 0;
+        int a, b, result;
 
         Scanner input = new Scanner(System.in);
         System.out.println("Input two integers");
 
-        try {
-            a = input.nextInt();
-            b = input.nextInt();
+        a = input.nextInt(); //InputMisMatchException
+        b = input.nextInt();
 
-            try {
-                result = a / b;
-            } catch (ArithmeticException ae) {
-                System.out.println("Cannot divide " + a + "/" + b);
-            }
+        result = a / b; //ArithMeticException
 
-            System.out.println(a +"/" + b + "=" + result);
-        } catch(InputMismatchException ime) {
-            System.out.println("Input is not an integer");
-        }
-
-    }
-
-    private static void unexpectedErrorHandling() throws StackOverflowError {
-        int a = 0;
-        int b = 0;
-
-        while(a == b) {
-            a++;
-            b++;
-
-            System.out.println("a: " + a + " b: " + b);
-
-            unexpectedErrorHandling();
-        }
+        System.out.println("Result = " + result);
     }
 
     private static void formatInteger() {
         String str = "1;";
-
-        int num = 0;
-        try {
-            Integer.parseInt (str) ;
-        } catch (NumberFormatException nfe) {
-            System.out.println("Improperly formatted number " + str);
-        }
+        int num = Integer.parseInt (str) ; //NumberFormatException
 
         System.out.println(num);
     }
@@ -127,12 +106,36 @@ public class Main {
     private static void loopOverArray() {
 
         for (int c = 1; c <= 5; c++) {
-            try {
-                System.out.println(languages[c]);
-            } catch (ArrayIndexOutOfBoundsException aie) {
-                System.out.println("Out of bounds: " + c);
-            }
+            System.out.println(languages[c]); //ArrayIndexOutOfBoundsException
         }
+    }
+    
+    public static void printName(String name) {
+        if(name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("name can't be empty!");
+        }
+        
+        System.out.println("Name: " + name);
+    }
+    
+    public static int getAgeFromUser() {
+        Scanner scanner = new Scanner(System.in);
+        
+        String age = scanner.nextLine(); 
+        if(age.isEmpty()) {
+            throw new new IllegalArgumentException("age can't be empty!");
+        }
+        
+        return Integer.parseInt(age); //NumberFormatException    
+    }
+    
+    public static void suprise(int num) {
+        System.out.println("Number: " + num);
+         
+        if(num == 0)
+            return;
+        else
+            suprise(++num);
     }
 
     private static void waitForInput() {
