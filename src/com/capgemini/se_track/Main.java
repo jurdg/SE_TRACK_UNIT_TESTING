@@ -1,6 +1,7 @@
 package com.capgemini.se_track;
 
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -48,16 +49,21 @@ public class Main {
         Scanner input = new Scanner(System.in);
         System.out.println("Input two integers");
 
-        a = input.nextInt();
-        b = input.nextInt();
-
         try {
-            result = a / b;
-        } catch (ArithmeticException ae) {
-            System.out.println("Cannot divide " + a + "/" + b);
+            a = input.nextInt();
+            b = input.nextInt();
+
+            try {
+                result = a / b;
+            } catch (ArithmeticException ae) {
+                System.out.println("Cannot divide " + a + "/" + b);
+            }
+
+            System.out.println(a +"/" + b + "=" + result);
+        } catch(InputMismatchException ime) {
+            System.out.println("Input is not an integer");
         }
 
-        System.out.println(a +"/" + b + "=" + result);
     }
 
     private static void formatInteger() {
