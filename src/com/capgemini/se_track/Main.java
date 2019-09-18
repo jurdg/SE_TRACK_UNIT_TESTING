@@ -20,6 +20,15 @@ public class Main {
         waitForInput();
         
         printName(null);
+        
+        try {
+            int myAge = getAgeFromUser();
+            
+        } catch(IllegalArgumentException e) {
+            e.printStackTrace();   
+        } catch(NumberFormatException e) {
+            e.printStackTrace();   
+        }
     }
 
     private static void createObject() {
