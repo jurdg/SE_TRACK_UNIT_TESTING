@@ -1,6 +1,7 @@
 package com.capgemini.se_track;
 
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -33,7 +34,7 @@ public class Main {
 
         try {
             division();
-        } catch(InputMisMatchException ime) {
+        } catch(InputMismatchException ime) {
             ime.printStackTrace();   
         } catch(ArithmeticException ame) {
             ame.printStackTrace();   
@@ -58,13 +59,11 @@ public class Main {
             
         } catch(IllegalArgumentException e) {
             e.printStackTrace();   
-        } catch(NumberFormatException e) {
-            e.printStackTrace();   
         }
     }
 
     private static void createObject() {
-        String a; //a is null
+        String a = "a";
         String b = "b";
         String c = "c";
         int i = 10;
@@ -123,7 +122,7 @@ public class Main {
         
         String age = scanner.nextLine(); 
         if(age.isEmpty()) {
-            throw new new IllegalArgumentException("age can't be empty!");
+            throw new IllegalArgumentException("age can't be empty!");
         }
         
         return Integer.parseInt(age); //NumberFormatException    
