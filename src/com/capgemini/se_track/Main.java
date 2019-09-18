@@ -1,6 +1,7 @@
 package com.capgemini.se_track;
 
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -52,7 +53,7 @@ public class Main {
 		}
 
     private static void createObject() {
-        String a;
+        String a = "a";
         String b = "b";
         String c = "c";
         int i = 10;
@@ -140,12 +141,12 @@ public class Main {
 
     //EIGEN METHOD MEERDERE EXCEPTIONS
 
-    public void ditGaatFout() throws NullPointerException, NumberFormatException {
+    public static void ditGaatFout() throws NullPointerException, NumberFormatException {
 
-		private int a = 1;
-		private int b = 2b;
-		private int c;
-		private int d;
+		int a = 1;
+        int b = 2;
+        int c = 3;
+        int d;
 		
 		try {
 			d = a + b + c;
