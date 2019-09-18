@@ -130,4 +130,26 @@ public class Main {
 	}
     }
 
+    //EIGEN METHOD MEERDERE EXCEPTIONS
+
+    public void ditGaatFout() {
+
+    
+
+    }
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
