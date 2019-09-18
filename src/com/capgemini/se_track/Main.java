@@ -7,6 +7,12 @@ public class Main {
 
     public static void main(String[] args) {
 
+        try {
+            printName("Suprise >:D");   
+        } catch(StackOverflowError e){
+            
+        }
+        
         try {          
             createObject();
         } catch (NullPointerException npe) {
@@ -52,12 +58,6 @@ public class Main {
             e.printStackTrace();   
         } catch(NumberFormatException e) {
             e.printStackTrace();   
-        }
-        
-        try {
-            main(null); //Suprise! >:D   
-        } catch(StackOverflowError e){
-            
         }
     }
 
@@ -126,6 +126,7 @@ public class Main {
         
         return Integer.parseInt(age); //NumberFormatException    
     }
+    
 
     private static void waitForInput() {
         try {
