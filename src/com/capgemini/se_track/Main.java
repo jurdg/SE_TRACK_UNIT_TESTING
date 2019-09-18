@@ -16,6 +16,10 @@ public class Main {
         division();
 
         loopOverArray();
+		
+		readFile();
+		
+		getFromArray();
 
         waitForInput();
     }
@@ -32,7 +36,7 @@ public class Main {
         System.out.println(result + Integer.toString(i));
     }
 
-    private static void getCharacter(int index) throws IndexOutOfBoundsException{
+    private static void getCharacter(int index) {
         String a = "This is a test string ";
 		try {
 			char c = a.charAt(24);
@@ -43,7 +47,7 @@ public class Main {
         System.out.println(c);
     }
 
-    private static void division() throws InputMismatchException, ArithmeticException{
+    private static void division() {
         int a, b, result;
 
         Scanner input = new Scanner(System.in);
@@ -65,28 +69,26 @@ public class Main {
 
 		try {
 			result = a / b;
+			System.out.println("Result = " + result);
 		}
 		catch (ArithmeticException ae) {
 			System.out.println("Divide by zero error");
 		}
-
-        System.out.println("Result = " + result);
     }
 
-    private static void formatInteger() throws NumberFormatException{
+    private static void formatInteger() {
         String str = "1;";
 		try {
 			int num = Integer.parseInt (str);
+			System.out.println(num);
 		}
 		catch (NumberFormatException nfe) {
 			System.out.println("Not a number");
-		}
-
-        System.out.println(num);
+		}        
     }
 
     private static String languages[] = { "C", "C++", "Java", "Perl", "Python" };
-    private static void loopOverArray() throws ArrayIndexOutOfBoundsException{
+    private static void loopOverArray() {
 
         for (int c = 1; c <= 5; c++) {
 			try {
@@ -106,7 +108,7 @@ public class Main {
         }
     }
 	
-	private static void readFile() throws IOException {
+	private static void readFile() {
 		String file = "text.txt";
 		
 		try {
@@ -122,8 +124,10 @@ public class Main {
 		scanner.close();
 	}
 	
-	private static void getFromArray() {		
+	private static void getFromArray() {
+		Scanner input = new Scanner(System.in);		
 		System.out.println("Get value from which index"):
+		
 		int index;
 		try {
 			index = input.nextInt();
