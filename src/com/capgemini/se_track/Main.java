@@ -19,6 +19,36 @@ public class Main {
         loopOverArray();
 
         waitForInput();
+
+        throwCustomUncheckedException(false);
+        throwCustomUncheckedException(true);
+
+        throwCustomCheckedException(false);
+        throwCustomCheckedException(true);
+
+        try {
+            unexpectedErrorHandling();
+        } catch (StackOverflowError soe) {
+            System.out.println("Will the application still run?");
+        }
+
+        division(); // Is this code reachable?
+
+        waitForInput();
+    }
+
+    private static void throwCustomUncheckedException(boolean withCustomMessage) throws MyUncheckedException {
+        if(!withCustomMessage)
+            throw new MyUncheckedException();
+
+        throw new MyUncheckedException("custom unchecked error");
+    }
+
+    private static void throwCustomCheckedException(boolean withCustomMessage) throws MyCheckedException {
+        if(!withCustomMessage)
+            throw new MyCheckedException();
+
+        throw new MyCheckedException("custom checked error");
     }
 
     private static void createObject() {
@@ -64,6 +94,20 @@ public class Main {
             System.out.println("Input is not an integer");
         }
 
+    }
+
+    private static void unexpectedErrorHandling() throws StackOverflowError {
+        int a = 0;
+        int b = 0;
+
+        while(a == b) {
+            a++;
+            b++;
+
+            System.out.println("a: " + a + " b: " + b);
+
+            unexpectedErrorHandling();
+        }
     }
 
     private static void formatInteger() {
