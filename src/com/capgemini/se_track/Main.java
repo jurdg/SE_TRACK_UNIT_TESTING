@@ -7,15 +7,40 @@ public class Main {
 
     public static void main(String[] args) {
 
-        createObject();
+        try {
+	    createObject();
+	} 
+	catch (NullPointerException npe) {
+	    npe.printStackTrace();
+	}
 
-        getCharacter(25);
+	try {
+            getCharacter(25);
+	}
+	catch (IndexOutOfBoundsException iob) {
+	    iob.printStackTrace();
+	}
 
-        formatInteger();
+        try {
+	    formatInteger();
+	}
+	catch (NumberFormatException nfe) {
+	    nfe.printStackTrace();
+	}
 
-        division();
+	try {
+            division();
+	}
+	catch (InputMismatchException ime) {
+	    ime.printStackTrace();
+	}
 
-        loopOverArray();
+	try {
+            loopOverArray();
+	}
+	catch (ArrayIndexOutOfBoundsException aob) {
+	    aob.printStackTrace();
+	}
 
         waitForInput();
     }
@@ -25,6 +50,8 @@ public class Main {
         String b = "b";
         String c = "c";
         int i = 10;
+	
+	//String a is null. Null + b gaat probleem veroorzaken. Nullpointerexception?	
 
         String result = a + b;
         result += c;
@@ -35,6 +62,9 @@ public class Main {
     private static void getCharacter(int index) {
         String a = "This is a test string ";
         char c = a.charAt(24);
+
+	//indexoutofboundsexception
+
         System.out.println(c);
     }
 
@@ -46,14 +76,21 @@ public class Main {
 
         a = input.nextInt();
         b = input.nextInt();
+	//inputmismatchexception if a double is entered?
 
         result = a / b;
+
+	//kan zijn dat int/int uit komt op een komma getal. result moet double zijn.
+	//illegalargumentexception in geval dat je door 0 deelt?
 
         System.out.println("Result = " + result);
     }
 
     private static void formatInteger() {
-        String str = "1;";
+        
+	//numberformatexception
+
+	String str = "1;";
         int num = Integer.parseInt (str) ;
 
         System.out.println(num);
@@ -61,6 +98,8 @@ public class Main {
 
     private static String languages[] = { "C", "C++", "Java", "Perl", "Python" };
     private static void loopOverArray() {
+
+	//arrayindexoutofboundsexception
 
         for (int c = 1; c <= 5; c++) {
             System.out.println(languages[c]);
@@ -74,4 +113,21 @@ public class Main {
             e.printStackTrace();
         }
     }
+
+    //EIGEN METHODE CHECKED EXCEPTION
+
+    public static String colors[] = {"Red", "Blue", "Green", "Yellow"};
+
+    public static void stringLoop() throws ArrayIndexOutOfBoundsException {
+	
+	try {
+	    for (int i = 0; i > 5; i++) {
+		System.out.println(colors[i]);
+	    }
+	}
+	catch (ArrayIndexOutOfBoundsException aob) {
+	    aob.printStackTrace();
+	}
+    }
+
 }
