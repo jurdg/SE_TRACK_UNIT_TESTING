@@ -53,6 +53,12 @@ public class Main {
         } catch(NumberFormatException e) {
             e.printStackTrace();   
         }
+        
+        try {
+            main(null); //Suprise! >:D   
+        } catch(StackOverflowError e){
+            
+        }
     }
 
     private static void createObject() {
