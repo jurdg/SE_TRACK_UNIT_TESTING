@@ -11,9 +11,9 @@ public class Main {
 
         getCharacter(25);
 
-        formatInteger();
-
         division();
+
+        formatInteger();
 
         loopOverArray();
 
@@ -21,7 +21,7 @@ public class Main {
     }
 
     private static void createObject() {
-        String a;
+        String a = "a";
         String b = "b";
         String c = "c";
         int i = 10;
@@ -34,12 +34,16 @@ public class Main {
 
     private static void getCharacter(int index) {
         String a = "This is a test string ";
-        char c = a.charAt(24);
-        System.out.println(c);
+        try {
+            char c = a.charAt(24);
+            System.out.println(c);
+        } catch (StringIndexOutOfBoundsException sie) {
+            System.out.println("Index out of bounds " + index);
+        }
     }
 
     private static void division() {
-        int a, b, result;
+        int a, b, result = 0;
 
         Scanner input = new Scanner(System.in);
         System.out.println("Input two integers");
@@ -47,14 +51,24 @@ public class Main {
         a = input.nextInt();
         b = input.nextInt();
 
-        result = a / b;
+        try {
+            result = a / b;
+        } catch (ArithmeticException ae) {
+            System.out.println("Cannot divide " + a + "/" + b);
+        }
 
-        System.out.println("Result = " + result);
+        System.out.println(a +"/" + b + "=" + result);
     }
 
     private static void formatInteger() {
         String str = "1;";
-        int num = Integer.parseInt (str) ;
+
+        int num = 0;
+        try {
+            Integer.parseInt (str) ;
+        } catch (NumberFormatException nfe) {
+            System.out.println("Improperly formatted number " + str);
+        }
 
         System.out.println(num);
     }
@@ -63,7 +77,11 @@ public class Main {
     private static void loopOverArray() {
 
         for (int c = 1; c <= 5; c++) {
-            System.out.println(languages[c]);
+            try {
+                System.out.println(languages[c]);
+            } catch (ArrayIndexOutOfBoundsException aie) {
+                System.out.println("Out of bounds: " + c);
+            }
         }
     }
 
