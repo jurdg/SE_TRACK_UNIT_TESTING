@@ -120,26 +120,36 @@ public class Main {
 
     public static void stringLoop() throws ArrayIndexOutOfBoundsException {
 	
-	try {
-	    for (int i = 0; i > 5; i++) {
-		System.out.println(colors[i]);
-	    }
-	}
-	catch (ArrayIndexOutOfBoundsException aob) {
-	    aob.printStackTrace();
-	}
+		try {
+			for (int i = 0; i > 5; i++) {
+			System.out.println(colors[i]);
+			}
+		}
+		catch (ArrayIndexOutOfBoundsException aob) {
+			aob.printStackTrace();
+		}
     }
 
     //EIGEN METHOD MEERDERE EXCEPTIONS
 
-    public void ditGaatFout() {
+    public void ditGaatFout() throws NullPointerException, NumberFormatException {
 
-    
-
+		private int a = 1;
+		private int b = 2b;
+		private int c;
+		private int d;
+		
+		try {
+			d = a + b + c;
+			System.out.println("The number is: " +d);
+		}
+		catch (NullPointerException npe) {
+			npe.printStackTrace();
+		}
+		catch (NumberFormatException nfe) {
+			nfe.printStackTrace();
+		}
     }
-
-
-
 }
 
 
