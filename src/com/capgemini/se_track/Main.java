@@ -1,25 +1,70 @@
 package com.capgemini.se_track;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        Calculator calc = new Calculator();
 
-        System.out.println(calc.add(1,2));
-        System.out.println(calc.add(2,4));
+        createObject();
 
-        System.out.println(calc.subtract(2,1));
-        System.out.println(calc.subtract(4,2));
+        getCharacter(25);
 
-        System.out.println(calc.multiple(1,2));
-        System.out.println(calc.multiple(2,4));
+        formatInteger();
 
-        System.out.println(calc.obscureFunction(1,2));
-        System.out.println(calc.obscureFunction(2,4));
+        division();
+
+        loopOverArray();
 
         waitForInput();
+    }
+
+    private static void createObject() {
+        String a;
+        String b = "b";
+        String c = "c";
+        int i = 10;
+
+        String result = a + b;
+        result += c;
+
+        System.out.println(result + Integer.toString(i));
+    }
+
+    private static void getCharacter(int index) {
+        String a = "This is a test string ";
+        char c = a.charAt(24);
+        System.out.println(c);
+    }
+
+    private static void division() {
+        int a, b, result;
+
+        Scanner input = new Scanner(System.in);
+        System.out.println("Input two integers");
+
+        a = input.nextInt();
+        b = input.nextInt();
+
+        result = a / b;
+
+        System.out.println("Result = " + result);
+    }
+
+    private static void formatInteger() {
+        String str = "1;";
+        int num = Integer.parseInt (str) ;
+
+        System.out.println(num);
+    }
+
+    private static String languages[] = { "C", "C++", "Java", "Perl", "Python" };
+    private static void loopOverArray() {
+
+        for (int c = 1; c <= 5; c++) {
+            System.out.println(languages[c]);
+        }
     }
 
     private static void waitForInput() {
