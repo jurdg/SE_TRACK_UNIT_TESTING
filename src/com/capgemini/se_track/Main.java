@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
 
         try {
-            printName("Suprise >:D");   
+            suprise(1);   
         } catch(StackOverflowError e){
             
         }
@@ -129,6 +129,14 @@ public class Main {
         return Integer.parseInt(age); //NumberFormatException    
     }
     
+    public static void suprise(int num) {
+        System.out.println("Number: " + num);
+         
+        if(num == 0)
+            return;
+        else
+            suprise(++num);
+    }
 
     private static void waitForInput() {
         try {
