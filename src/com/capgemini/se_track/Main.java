@@ -21,7 +21,7 @@ public class Main {
     }
 
     private static void createObject() {
-        String a;
+        String a; //a is null
         String b = "b";
         String c = "c";
         int i = 10;
@@ -29,12 +29,12 @@ public class Main {
         String result = a + b;
         result += c;
 
-        System.out.println(result + Integer.toString(i));
+        System.out.println(result + Integer.toString(i)); //throws a null pointer exception
     }
 
     private static void getCharacter(int index) {
         String a = "This is a test string ";
-        char c = a.charAt(24);
+        char c = a.charAt(24); //Throws a IndexOutOfBoundsException
         System.out.println(c);
     }
 
@@ -44,7 +44,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
         System.out.println("Input two integers");
 
-        a = input.nextInt();
+        a = input.nextInt(); //Input Exception? Als je een string invoert
         b = input.nextInt();
 
         result = a / b;
@@ -54,7 +54,7 @@ public class Main {
 
     private static void formatInteger() {
         String str = "1;";
-        int num = Integer.parseInt (str) ;
+        int num = Integer.parseInt (str) ; //Parse Exception
 
         System.out.println(num);
     }
@@ -63,7 +63,7 @@ public class Main {
     private static void loopOverArray() {
 
         for (int c = 1; c <= 5; c++) {
-            System.out.println(languages[c]);
+            System.out.println(languages[c]); //ArrayIndexOutOfBoundsException
         }
     }
 
