@@ -96,7 +96,6 @@ public class Main {
     private static String languages[] = { "C", "C++", "Java", "Perl", "Python" };
     private static void loopOverArray() throws ArrayIndexOutOfBoundsException {
 
-		//EXCEPTION
         for (int c = 1; c <= 5; c++) {
 			try {			
 				System.out.println(languages[c]);
