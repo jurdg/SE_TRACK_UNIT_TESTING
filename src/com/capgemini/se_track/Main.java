@@ -63,7 +63,7 @@ public class Main {
 			System.out.println("Value input is not an integer");
 		}
 
-        try {
+		try {
 			result = a / b;
 		}
 		catch (ArithmeticException ae) {
@@ -120,6 +120,21 @@ public class Main {
 		}
 		
 		scanner.close();
+	}
+	
+	private static void getFromArray() {		
+		System.out.println("Get value from which index"):
+		int index;
+		try {
+			index = input.nextInt();
+			System.out.println(languages[index]);
+		}
+		catch (InputMismatchException ime) {
+			System.out.println("Not a valid number");
+		}
+		catch (ArrayIndexOutOfBoundsException aie) {
+			System.out.println("Index out of bounds");
+		}
 	}
 
 }
