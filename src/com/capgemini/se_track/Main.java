@@ -44,6 +44,11 @@ public class Main {
 
 			waitForInput();
 			
+			stringLoop();
+			
+			ditGaatFout();
+			
+			
 		}
 
     private static void createObject() {
