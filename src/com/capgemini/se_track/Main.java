@@ -23,8 +23,12 @@ public class Main {
         throwCustomUncheckedException(false);
         throwCustomUncheckedException(true);
 
-        throwCustomCheckedException(false);
-        throwCustomCheckedException(true);
+        try {
+            throwCustomCheckedException(false);
+            throwCustomCheckedException(true);
+        } catch (MyCheckedException e) {
+            e.printStackTrace();
+        }
 
         try {
             unexpectedErrorHandling();
