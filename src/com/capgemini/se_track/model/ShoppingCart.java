@@ -13,7 +13,11 @@ public class ShoppingCart {
         return items;
     }
 
-    public void setItems(Item items) {
-        this.items.add(items);
+    public void setItems(Item item) {
+        this.items.add(item);
+    }
+
+    public void removeItems(Item item) {
+        this.items.removeIf(Item -> Item.equals(item));
     }
 }

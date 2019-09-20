@@ -6,7 +6,6 @@ import com.capgemini.se_track.view.CashRegisterView;
 import java.util.ArrayList;
 
 public class CashRegisterController {
-    //private ArrayList<Reservation> reservations;
     private CashRegisterView view;
 
     private static CashRegisterController instance = null;

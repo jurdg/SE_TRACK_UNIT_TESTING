@@ -23,6 +23,24 @@ public class ShoppingCartView {
         for (Item item : itemList) {
             if (item.getName().equals(userInput)) {
                 ShoppingCartController.getInstance().addItem(item);
+
+                System.out.println(String.format("Added %s to your shopping cart!", item.getName()));
+            }
+        }
+    }
+
+    public static void showRemoveView() {
+        System.out.println("Which item would you like to remove from your Shopping Cart?");
+        showShoppingCart();
+
+        Scanner scanner = new Scanner(System.in);
+        String userInput = scanner.nextLine();
+
+        for (Item item : ShoppingCartController.getInstance().getCart()) {
+            if (item.getName().equals(userInput)) {
+                ShoppingCartController.getInstance().removeItem(item);
+
+                System.out.println(String.format("Removed %s from your shopping cart!", item.getName()));
             }
         }
     }

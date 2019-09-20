@@ -32,7 +32,7 @@ public class ShoppingCartController {
         return model.getItems();
     }
 
-//    public static removeItem(Item item) {
-//
-//    }
+    public static void removeItem(Item item) {
+        model.removeItems(item);
+    }
 }
