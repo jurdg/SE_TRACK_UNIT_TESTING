@@ -1,7 +1,5 @@
 package com.capgemini.se_track.model;
 
-import java.util.ArrayList;
-
 public class Item {
     private String name;
     private double price;

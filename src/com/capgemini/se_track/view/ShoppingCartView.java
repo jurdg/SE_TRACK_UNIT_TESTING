@@ -2,7 +2,6 @@ package com.capgemini.se_track.view;
 
 import com.capgemini.se_track.controller.ItemController;
 import com.capgemini.se_track.controller.ShoppingCartController;
-import com.capgemini.se_track.enums.ItemEnum;
 import com.capgemini.se_track.model.Item;
 
 import java.util.ArrayList;
@@ -26,9 +25,6 @@ public class ShoppingCartView {
 
                 System.out.println(String.format("Added %s to your shopping cart!", item.getName()));
             }
-//            } else {
-//                System.out.println("This item doesn't exist!");
-//            }
         }
     }
 

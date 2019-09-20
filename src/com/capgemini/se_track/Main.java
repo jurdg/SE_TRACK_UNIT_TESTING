@@ -1,7 +1,5 @@
 package com.capgemini.se_track;
 
-import com.capgemini.se_track.controller.ShoppingCartController;
-import com.capgemini.se_track.model.ShoppingCart;
 import com.capgemini.se_track.view.CashRegisterView;
 import com.capgemini.se_track.view.ShoppingCartView;
 

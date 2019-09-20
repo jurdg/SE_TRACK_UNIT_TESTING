@@ -1,12 +1,8 @@
 package com.capgemini.se_track.controller;
 
-import com.capgemini.se_track.enums.ItemEnum;
 import com.capgemini.se_track.model.CashRegister;
 import com.capgemini.se_track.model.Item;
-import com.capgemini.se_track.model.ShoppingCart;
 import com.capgemini.se_track.view.CashRegisterView;
-
-import java.util.ArrayList;
 
 public class CashRegisterController {
     private CashRegisterView view;
@@ -29,11 +25,7 @@ public class CashRegisterController {
     public static double calculateChange(double totalAmount, double customerAmount) {
         return customerAmount - totalAmount;
     }
-//
-//    public static calculateDiscount(ArrayList<ItemEnum> items) {
-//
-//    }
-//
+    
     public static double checkout() {
         double totalAmount = 0;
 
