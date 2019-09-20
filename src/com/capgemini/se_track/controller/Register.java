@@ -2,14 +2,14 @@ package com.capgemini.se_track.controller;
 
 import com.capgemini.se_track.model.*;
 
-import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Comparator;
 import java.util.Date;
 
 public class Register {
-    private BigDecimal totalPrice = new BigDecimal("0");
-    private BigDecimal discount = new BigDecimal("0");
+    private double priceAfterDiscount;
+    private double totalPrice = 0;
+    private double discount = 0;
     private ShoppingCart shoppingCart;
 
     public Register(ShoppingCart shoppingCart) {
@@ -22,21 +22,24 @@ public class Register {
         else {
             calculateTotalPrice();
             calculateDiscount();
-            System.out.println("Price is : €" + totalPrice.subtract(discount));
+            priceAfterDiscount = totalPrice - discount;
+            System.out.println("Your total comes to €" + priceAfterDiscount);
         }
     }
 
     private void calculateTotalPrice() {
         for(Product p : shoppingCart.getContents())
-            totalPrice = totalPrice.add(p.getPrice());
+            totalPrice += p.getPrice();
     }
 
     private void calculateDiscount() {
         ShoppingCart sortedCart = shoppingCart;
         sortedCart.getContents().sort(Comparator.comparing(Product::getName));
         getTypeAndCount(sortedCart);
+
     }
 
+    //TODO: Fix
     private void getTypeAndCount(ShoppingCart cart) {
         String productName = cart.getContents().get(0).getName();
         int count = 1;
@@ -53,28 +56,36 @@ public class Register {
         switch (ProductName.valueOf(productName.toUpperCase())) {
             case SOAP:
                 for(int i = 0; i < count/2; i++)
-                    discount = discount.add(new Soap().getPrice().multiply(BigDecimal.valueOf(0.31)));
+                    discount += new Soap().getPrice() * 0.31;
                 break;
             case DIAPERS:
                 for(int i = 0; i < count/4; i++)
-                    discount = discount.add(new Diapers().getPrice());
+                    discount += new Diapers().getPrice();
                 break;
             case YOGURT:
                 Date now = new Date();
                 if (new SimpleDateFormat("EEEE").format(now).equals("woensdag")) {
                     for(int i = 0; i < count; i++)
-                        discount = discount.add(BigDecimal.valueOf(1));
+                        discount += 1;
                 }
                 break;
         }
     }
 
-    public void pay(BigDecimal money) {
-        if (totalPrice.doubleValue() > money.doubleValue())
+    public void pay(double money) {
+        if (priceAfterDiscount > money)
             System.out.println("Not enough money to pay!");
         else {
-            BigDecimal change = money.subtract(totalPrice);
-            System.out.println("Your change is :€" + change);
+            double change = money - priceAfterDiscount;
+            System.out.println("Your change is €" + change);
         }
+    }
+
+    public void printReceipt() {
+        System.out.println("Receipt:");
+        for(Product p : shoppingCart.getContents())
+            System.out.printf("%s - €%.2f \n", p.getName(), p.getPrice());
+        System.out.printf("Total amount: €%.2f \nTotal discount: €%.2f \nAmount to pay: €%.2f %n",
+                totalPrice, discount, priceAfterDiscount);
     }
 }
