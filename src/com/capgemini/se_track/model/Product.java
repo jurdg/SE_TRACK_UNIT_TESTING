@@ -6,6 +6,10 @@ public abstract class Product {
     private double priceInEuro;
     private int amount;
 
+    public Product() {
+
+    }
+
     public Product(String name, double priceInEuro, int amount) {
         this.name = name;
         this.priceInEuro = priceInEuro;
@@ -20,6 +24,12 @@ public abstract class Product {
         this.name = name;
     }
 
+    public abstract double getPriceInEuro();
+
+    public void setPriceInEuro(double priceInEuro) {
+        this.priceInEuro = priceInEuro;
+    }
+
     public int getAmount() {
         return amount;
     }
@@ -27,6 +37,4 @@ public abstract class Product {
     public void setAmount(int amount) {
         this.amount = amount;
     }
-
-    public abstract double getPrice();
 }
