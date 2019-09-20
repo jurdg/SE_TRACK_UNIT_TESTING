@@ -13,6 +13,7 @@ public class Main {
     	cart.addToCart(new Soap());
 
     	register.calculatePrice();
+    	register.pay(10);
     }
 
 }
