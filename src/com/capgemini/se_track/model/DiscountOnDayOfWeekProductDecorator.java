@@ -19,7 +19,6 @@ public class DiscountOnDayOfWeekProductDecorator extends Product {
     @Override
     public double getPriceInEuro() {
         int currentDayOfWeek = LocalDateTime.now().getDayOfWeek().getValue();
-        System.out.println("Current day of week: " + currentDayOfWeek);
 
         if (currentDayOfWeek == dayOfWeekRequired) {
             return product.getAmount() * (product.getPriceInEuro() - discountInEuro);

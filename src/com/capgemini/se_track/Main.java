@@ -1,25 +1,25 @@
 package com.capgemini.se_track;
 
-import com.capgemini.se_track.model.*;
+import com.capgemini.se_track.model.CashRegister;
+import com.capgemini.se_track.model.Products;
+import com.capgemini.se_track.model.ShoppingCart;
+import com.capgemini.se_track.model.Supermarket;
 
 public class Main {
 
     public static void main(String[] args) {
-        ShoppingCart shoppingCart = new ShoppingCart();
-        CashRegister cashRegister = new CashRegister();
-        Supermarket jumbo = new Supermarket(shoppingCart, cashRegister);
+        Supermarket jumbo = new Supermarket(new ShoppingCart(), new CashRegister());
 
-        Product soap = new SetAmountDiscountProductDecorator(new Soap(2), 31, 2);
-        shoppingCart.addProduct(soap);
+        jumbo.getShoppingCart().addProduct(Products.SOAP, 2);
 
-        Product diapers = new FreeProductsWhenAmountProductDecorator(new Diapers(4), 1, 4);
-        shoppingCart.addProduct(diapers);
+        jumbo.getShoppingCart().addProduct(Products.DIAPERS, 4);
 
-        Product yoghurt = new DiscountOnDayOfWeekProductDecorator(new Yoghurt(1), 3, 1);
-        shoppingCart.addProduct(yoghurt);
+        jumbo.getShoppingCart().addProduct(Products.CEREAL, 3);
 
-        System.out.println(soap.getPriceInEuro());
-        System.out.println(diapers.getPriceInEuro());
-        System.out.println(yoghurt.getPriceInEuro());
+        jumbo.getShoppingCart().addProduct(Products.YOGHURT, 1);
+
+        jumbo.getShoppingCart().addProduct(Products.CHINESE_VEGETABLES, 1);
+
+        System.out.println("Total price: " + jumbo.getCashRegister().getTotalPrice(jumbo.getShoppingCart()));
     }
 }
