@@ -22,6 +22,6 @@ public abstract class Product {
     @Override
     public boolean equals(Object o) {
         Product product = (Product) o;
-        return this.name.equals(product.getName());
+        return this.getName().equals(product.getName());
     }
 }

@@ -1,4 +1,6 @@
-package com.capgemini.se_track.model;
+package com.capgemini.se_track.controller;
+
+import com.capgemini.se_track.model.Product;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -16,8 +18,8 @@ public class ShoppingCart {
     }
 
     public void removeFromCart(Product product) {
-        boolean hasDeleted = false;
         if(contents.contains(product)) {
+            boolean hasDeleted = false;
             Iterator<Product> iterator = contents.iterator();
             while(!hasDeleted) {
                 while (iterator.hasNext()){
@@ -29,5 +31,10 @@ public class ShoppingCart {
                 }
             }
         }
+        else System.out.println("This product is not in your shopping cart!");
+    }
+
+    public List<Product> getContents() {
+        return contents;
     }
 }
