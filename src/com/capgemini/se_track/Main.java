@@ -1,9 +1,6 @@
 package com.capgemini.se_track;
 
-import com.capgemini.se_track.model.CashRegister;
-import com.capgemini.se_track.model.Products;
-import com.capgemini.se_track.model.ShoppingCart;
-import com.capgemini.se_track.model.Supermarket;
+import com.capgemini.se_track.model.*;
 
 public class Main {
 
@@ -20,6 +17,12 @@ public class Main {
 
         jumbo.getShoppingCart().addProduct(Products.CHINESE_VEGETABLES, 1);
 
-        System.out.println("Total price: " + jumbo.getCashRegister().getTotalPrice(jumbo.getShoppingCart()));
+
+        try {
+            jumbo.getCashRegister().checkout(jumbo.getShoppingCart(), 25);
+        } catch (InsufficientFundsException isfe) {
+            isfe.printStackTrace();
+            jumbo.getCashRegister().checkout(jumbo.getShoppingCart(), 50);
+        }
     }
 }

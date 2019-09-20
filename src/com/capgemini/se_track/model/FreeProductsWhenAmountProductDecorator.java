@@ -16,10 +16,17 @@ public class FreeProductsWhenAmountProductDecorator extends Product {
 
     @Override
     public double getPriceInEuro() {
+        double totalPrice = this.product.getAmount() * this.product.getPriceInEuro();
+        System.out.println("Total price of " + "'" + product.getName() + "': " + totalPrice);
+
+
         if (product.getAmount() == amountRequired) {
-            return (this.product.getAmount() - amountFree) * product.getPriceInEuro();
+            double discountedPrice = (this.product.getAmount() - amountFree) * product.getPriceInEuro();
+            System.out.println("Total discount of " + "'" + product.getName() + "': " + (totalPrice - discountedPrice));
+
+            return discountedPrice;
         } else {
-            return this.product.getAmount() * this.product.getPriceInEuro();
+            return totalPrice;
         }
     }
 }

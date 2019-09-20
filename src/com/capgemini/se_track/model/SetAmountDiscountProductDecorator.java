@@ -16,10 +16,16 @@ public class SetAmountDiscountProductDecorator extends Product {
 
     @Override
     public double getPriceInEuro() {
+        double totalPrice = this.product.getAmount() * this.product.getPriceInEuro();
+        System.out.println("Total price of " + "'" + product.getName() + "': " + totalPrice);
+
         if (this.product.getAmount() >= amountRequired) {
-            return this.getAmount() * (this.product.getPriceInEuro() * discount);
+            double discountedPrice = this.getAmount() * (this.product.getPriceInEuro() * discount);
+            System.out.println("Total discount of " + "'" + product.getName() + "': " + (totalPrice - discountedPrice));
+
+            return discountedPrice;
         } else {
-            return this.product.getAmount() * this.product.getPriceInEuro();
+            return totalPrice;
         }
     }
 }
