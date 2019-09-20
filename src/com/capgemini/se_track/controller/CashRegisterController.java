@@ -1,17 +1,22 @@
 package com.capgemini.se_track.controller;
 
 import com.capgemini.se_track.enums.ItemEnum;
+import com.capgemini.se_track.model.CashRegister;
+import com.capgemini.se_track.model.Item;
+import com.capgemini.se_track.model.ShoppingCart;
 import com.capgemini.se_track.view.CashRegisterView;
 
 import java.util.ArrayList;
 
 public class CashRegisterController {
     private CashRegisterView view;
+    private CashRegister model;
 
     private static CashRegisterController instance = null;
 
     private CashRegisterController(){
         view = new CashRegisterView();
+        model = new CashRegister();
     }
 
     public static CashRegisterController getInstance() {
@@ -21,15 +26,21 @@ public class CashRegisterController {
         return instance;
     }
 
-//    public static calculateChange(ArrayList<ItemEnum> items) {
-//
-//    }
+    public static double calculateChange(double totalAmount, double customerAmount) {
+        return customerAmount - totalAmount;
+    }
 //
 //    public static calculateDiscount(ArrayList<ItemEnum> items) {
 //
 //    }
 //
-//    public static checkout(ArrayList<ItemEnum> items) {
-//
-//    }
+    public static double checkout() {
+        double totalAmount = 0;
+
+        for (Item item : ShoppingCartController.getCart()) {
+            totalAmount = totalAmount + item.getPrice();
+        }
+
+        return totalAmount;
+    }
 }

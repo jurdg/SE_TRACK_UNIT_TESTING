@@ -14,7 +14,7 @@ public class ShoppingCartView {
         ArrayList<Item> itemList = ItemController.getItemsFromDatabase();
 
         for (Item item : ItemController.getItemsFromDatabase()) {
-            System.out.println(String.format("%s %s", item.getName(), Double.toString(item.getPrice())));
+            System.out.println(String.format("%s costs $%s.", item.getName(), Double.toString(item.getPrice())));
         }
 
         Scanner scanner = new Scanner(System.in);
@@ -26,6 +26,9 @@ public class ShoppingCartView {
 
                 System.out.println(String.format("Added %s to your shopping cart!", item.getName()));
             }
+//            } else {
+//                System.out.println("This item doesn't exist!");
+//            }
         }
     }
 
