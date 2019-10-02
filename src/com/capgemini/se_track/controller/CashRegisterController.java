@@ -25,7 +25,7 @@ public class CashRegisterController {
     public static double calculateChange(double totalAmount, double customerAmount) {
         return customerAmount - totalAmount;
     }
-    
+
     public static double checkout() {
         double totalAmount = 0;
 
